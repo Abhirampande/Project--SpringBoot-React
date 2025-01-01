@@ -12,3 +12,14 @@ Sol:-
 		<version>1.18.36</version>
 	</path>
 </annotationProcessorPaths>
+
+Error 2:--
+Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.30
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+
+ Solution:-- downgrade the version from 3.4.1 to 3.3.5
