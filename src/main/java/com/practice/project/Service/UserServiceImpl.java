@@ -9,6 +9,9 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService{
@@ -28,5 +31,12 @@ public class UserServiceImpl implements UserService{
                         new ResourceNotFoundException("user not exists with id :" + userId
         ));
         return UserMapper.mapToUserDto(user);
+    }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepo.findAll();
+        return users.stream().map((user) -> UserMapper.mapToUserDto(user))
+                .collect(Collectors.toList());
     }
 }
