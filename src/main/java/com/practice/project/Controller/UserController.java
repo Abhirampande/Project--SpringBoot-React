@@ -24,6 +24,13 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
+    //Build Get Employee Rest Api
+
+    public ResponseEntity<UserDto> getUserById(Long userId){
+        UserDto userDto = userService.getUserById(userId);
+        return ResponseEntity.ok(userDto);
+    }
+
 
 
 
