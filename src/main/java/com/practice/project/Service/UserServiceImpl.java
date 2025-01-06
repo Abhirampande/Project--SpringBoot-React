@@ -39,4 +39,14 @@ public class UserServiceImpl implements UserService{
         return users.stream().map((user) -> UserMapper.mapToUserDto(user))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public UserDto updateUser(Long userId, UserDto updatedUser) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("user not exists:" + userId));
+        user.setName(updatedUser.getName());
+        user.setAge(updatedUser.getAge());
+        User updatedUserObj = userRepo.save(user);
+        //passing updated user object into dto as parameter
+        return UserMapper.mapToUserDto(updatedUserObj);
+    }
 }

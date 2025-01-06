@@ -10,4 +10,6 @@ public interface UserService {
     UserDto getUserById(Long UserId);
 
     List<UserDto> getAllUsers();
+
+    UserDto updateUser(Long userId, UserDto updatedUser);
 }
