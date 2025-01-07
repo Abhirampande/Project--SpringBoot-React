@@ -49,4 +49,12 @@ public class UserServiceImpl implements UserService{
         //passing updated user object into dto as parameter
         return UserMapper.mapToUserDto(updatedUserObj);
     }
+
+    @Override
+    public void deleteUser(Long userId) {
+        User user = userRepo.findById(userId).orElseThrow(() ->
+                new ResourceNotFoundException("user not exists:" + userId));
+
+        userRepo.deleteById(userId);
+    }
 }
